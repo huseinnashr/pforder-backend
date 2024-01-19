@@ -1,0 +1,16 @@
+version: "@latest"
+base_url: http://localhost:8080
+server: 
+  http:
+    address: :8080
+  grpc:
+    address: :8081
+resource:
+  sql_database:
+    host: localhost
+    port: 5432
+    user: postgres
+    password: postgres
+    db_name: postgres
+  redis:
+    address: localhost:6379
