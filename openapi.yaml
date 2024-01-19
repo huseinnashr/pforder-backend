@@ -1,0 +1,90 @@
+# Generated with protoc-gen-openapi
+# https://github.com/google/gnostic/tree/master/cmd/protoc-gen-openapi
+
+openapi: 3.0.3
+info:
+    title: AccountService API
+    version: 0.0.1
+paths:
+    /orders:list:
+        post:
+            tags:
+                - AccountService
+            operationId: AccountService_ListOrder
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/v1.ListOrderRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/v1.ListOrderResponse'
+components:
+    schemas:
+        v1.ListOrderRequest:
+            type: object
+            properties:
+                filters:
+                    $ref: '#/components/schemas/v1.ListOrderRequest_Filter'
+                pagination:
+                    $ref: '#/components/schemas/v1.PaginationRequest'
+        v1.ListOrderRequest_Filter:
+            type: object
+            properties:
+                search:
+                    type: string
+                    description: search order_name or product_name
+                startDate:
+                    type: string
+                    description: RFC 3339
+                    format: date-time
+                endDate:
+                    type: string
+                    description: RFC 3339
+                    format: date-time
+        v1.ListOrderResponse:
+            type: object
+            properties:
+                orders:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/v1.Order'
+                pagination:
+                    $ref: '#/components/schemas/v1.PaginationResponse'
+        v1.Order:
+            type: object
+            properties:
+                orderName:
+                    type: string
+                customerCompanyName:
+                    type: string
+                customerName:
+                    type: string
+                orderDate:
+                    type: string
+                    description: RFC 3339
+                    format: date-time
+                deliveredAmount:
+                    type: string
+                    description: 0.1 cent units
+                totalAmount:
+                    type: string
+        v1.PaginationRequest:
+            type: object
+            properties:
+                cursor:
+                    type: string
+                size:
+                    type: string
+        v1.PaginationResponse:
+            type: object
+            properties:
+                nextCursor:
+                    type: string
+tags:
+    - name: AccountService
