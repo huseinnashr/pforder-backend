@@ -1,4 +1,4 @@
-package account
+package order
 
 import (
 	v1 "github.com/huseinnashr/pforder-backend/api/v1"

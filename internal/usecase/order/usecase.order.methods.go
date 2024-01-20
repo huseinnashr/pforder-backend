@@ -1,4 +1,4 @@
-package account
+package order
 
 import (
 	"context"
@@ -8,7 +8,7 @@ import (
 )
 
 func (u *Usecase) ListOrder(ctx context.Context, params domain.ListOrderParam) ([]domain.Order, string, error) {
-	ctx, span := tracer.Start(ctx, "usecase.Signup")
+	ctx, span := tracer.Start(ctx, "usecase.ListOrder")
 	defer span.End()
 
 	return u.orderRepo.ListOrder(ctx, params)
