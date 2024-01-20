@@ -9,9 +9,12 @@ setup:
 api:
 	buf generate ${EXCLUDE_THIRD_PARTY} --path api/v1
 
-build:
+build-api:
 	go build -v -o bin/app-api cmd/app-api/*.go
 
-start-dev:
+build-cli:
+	go build -v -o bin/app-cli cmd/app-cli/*.go
+
+start-api-dev:
 	make api
-	reflex -r "\.(go|yaml)" -s -- sh -c "make build && ./bin/app-api -config=./files/config/development.yaml"
+	reflex -r "\.(go|yaml)" -s -- sh -c "make build-api && ./bin/app-api -config=./files/config/development.yaml"

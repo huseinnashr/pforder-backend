@@ -1,4 +1,4 @@
-package account
+package order
 
 import (
 	"github.com/huseinnashr/pforder-backend/internal/domain"

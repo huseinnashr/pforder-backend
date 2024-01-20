@@ -6,9 +6,9 @@ import (
 	"fmt"
 
 	"github.com/huseinnashr/pforder-backend/internal/config"
-	orderhandler "github.com/huseinnashr/pforder-backend/internal/handler/api/order"
-	orderrepo "github.com/huseinnashr/pforder-backend/internal/repo/order"
-	orderusecase "github.com/huseinnashr/pforder-backend/internal/usecase/order"
+	migratehandler "github.com/huseinnashr/pforder-backend/internal/handler/cli/migrate"
+	migraterepo "github.com/huseinnashr/pforder-backend/internal/repo/migrate"
+	migrateusecase "github.com/huseinnashr/pforder-backend/internal/usecase/migrate"
 	_ "github.com/lib/pq"
 )
 
@@ -22,12 +22,11 @@ func startApp(ctx context.Context, config *config.Config) error {
 	if err != nil {
 		return err
 	}
+	migrateRepo := migraterepo.New(config)
+	migrateUsecase := migrateusecase.New(migrateRepo, sqlDatabase)
+	migrateHandler := migratehandler.New(migrateUsecase)
 
-	orderRepo := orderrepo.New(config, sqlDatabase)
-	orderUsecase := orderusecase.New(orderRepo)
-	orderHandler := orderhandler.New(orderUsecase)
-
-	if err := startServer(ctx, config, orderHandler); err != nil {
+	if err := startCommand(ctx, migrateHandler); err != nil {
 		return err
 	}
 

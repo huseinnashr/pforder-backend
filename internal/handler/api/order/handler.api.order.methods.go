@@ -1,8 +1,7 @@
-package account
+package order
 
 import (
 	"context"
-	"log"
 
 	v1 "github.com/huseinnashr/pforder-backend/api/v1"
 	"github.com/huseinnashr/pforder-backend/internal/domain"
@@ -12,10 +11,9 @@ import (
 
 // Signup implements v1.AccountServiceHTTPServer.
 func (h *Handler) ListOrder(ctx context.Context, req *v1.ListOrderRequest) (*v1.ListOrderResponse, error) {
-	ctx, span := tracer.Start(ctx, "handler.Signup")
+	ctx, span := tracer.Start(ctx, "handler.ListOrder")
 	defer span.End()
 
-	log.Println(req.GetFilters().GetEndDate().AsTime())
 	orders, nextCursor, err := h.orderUsecase.ListOrder(ctx, domain.ListOrderParam{
 		Search:    req.GetFilters().GetSearch(),
 		StartDate: req.GetFilters().GetStartDate().AsTime(),
