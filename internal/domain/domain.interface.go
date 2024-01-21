@@ -4,6 +4,8 @@ import (
 	"context"
 	"database/sql"
 	"time"
+
+	v1 "github.com/huseinnashr/pforder-backend/api/v1"
 )
 
 const SMALLEST_MONEY_UNIT int64 = 1000
@@ -40,6 +42,7 @@ type ListOrderParam struct {
 	Search    string
 	StartDate time.Time
 	EndDate   time.Time
+	OrderType v1.OrderType
 	PageSize  int64
 	Cursor    string
 }
@@ -53,7 +56,9 @@ type CSVToDBParam struct {
 }
 
 type Order struct {
+	ID                  int64
 	OrderName           string
+	Products            []string
 	CustomerCompanyName string
 	CustomerName        string
 	OrderDate           time.Time

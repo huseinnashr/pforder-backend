@@ -18,6 +18,7 @@ func (h *Handler) ListOrder(ctx context.Context, req *v1.ListOrderRequest) (*v1.
 		Search:    req.GetFilters().GetSearch(),
 		StartDate: req.GetFilters().GetStartDate().AsTime(),
 		EndDate:   req.GetFilters().GetEndDate().AsTime(),
+		OrderType: req.GetOrderType(),
 		PageSize:  req.GetPagination().GetSize(),
 		Cursor:    req.GetPagination().GetCursor(),
 	})
@@ -29,6 +30,7 @@ func (h *Handler) ListOrder(ctx context.Context, req *v1.ListOrderRequest) (*v1.
 	for i, order := range orders {
 		pbOrders[i] = &v1.Order{
 			OrderName:           order.OrderName,
+			Products:            order.Products,
 			CustomerCompanyName: order.CustomerCompanyName,
 			OrderDate:           timestamppb.New(order.OrderDate),
 			CustomerName:        order.CustomerName,
