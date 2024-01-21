@@ -33,6 +33,9 @@ components:
                     $ref: '#/components/schemas/v1.ListOrderRequest_Filter'
                 pagination:
                     $ref: '#/components/schemas/v1.PaginationRequest'
+                orderType:
+                    type: integer
+                    format: enum
         v1.ListOrderRequest_Filter:
             type: object
             properties:
@@ -61,6 +64,10 @@ components:
             properties:
                 orderName:
                     type: string
+                products:
+                    type: array
+                    items:
+                        type: string
                 customerCompanyName:
                     type: string
                 customerName:

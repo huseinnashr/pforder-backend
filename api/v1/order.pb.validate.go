@@ -325,6 +325,8 @@ func (m *ListOrderRequest) validate(all bool) error {
 		}
 	}
 
+	// no validation rules for OrderType
+
 	if len(errors) > 0 {
 		return ListOrderRequestMultiError(errors)
 	}

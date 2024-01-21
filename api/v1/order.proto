@@ -26,6 +26,12 @@ message PaginationResponse {
   string nextCursor = 1;
 }
 
+enum OrderType {
+  ORDERTYPE_UNSPECIFIED = 0;
+  ORDERTYPE_ASC = 1;
+  ORDERTYPE_DESC = 2;
+}
+
 message ListOrderRequest {
   message Filter {
     // search order_name or product_name
@@ -38,6 +44,7 @@ message ListOrderRequest {
 
   Filter filters = 1;
   PaginationRequest pagination = 2;
+  OrderType order_type = 3;
 }
 
 message ListOrderResponse {
@@ -47,11 +54,12 @@ message ListOrderResponse {
 
 message Order {
   string order_name = 1;
-  string customer_company_name = 2;
-  string customer_name = 3;
+  repeated string products = 2; 
+  string customer_company_name = 3;
+  string customer_name = 4;
   // RFC 3339
-  google.protobuf.Timestamp order_date = 4;
+  google.protobuf.Timestamp order_date = 5;
   // 0.1 cent units
-  int64 delivered_amount = 5;
-  int64 total_amount = 6;
+  int64 delivered_amount = 6;
+  int64 total_amount = 7;
 }
