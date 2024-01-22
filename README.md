@@ -16,7 +16,8 @@
 GOOSE_DRIVER=postgres
 GOOSE_DBSTRING="postgres://postgres:postgres@localhost:5432/postgres"
 ```
-32. Run `goose -dir migrations up`
+32. Run `goose -dir migrations up` to create the tables
+33. Run `make build-cli && ./bin/app-cli migrate all` to migrate the data
 
 #### 4. Running go service
 41. Run `make start-dev` to start dev server
