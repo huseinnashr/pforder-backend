@@ -8,7 +8,7 @@ import (
 	v1 "github.com/huseinnashr/pforder-backend/api/v1"
 )
 
-const SMALLEST_MONEY_UNIT int64 = 1000
+const SMALLEST_MONEY_UNIT int64 = 10000
 
 type IOrderUsecase interface {
 	ListOrder(ctx context.Context, params ListOrderParam) ([]Order, string, error)

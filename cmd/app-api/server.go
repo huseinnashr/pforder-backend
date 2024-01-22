@@ -5,6 +5,7 @@ import (
 
 	"github.com/go-kratos/kratos/v2/transport/grpc"
 	"github.com/go-kratos/kratos/v2/transport/http"
+	"github.com/gorilla/handlers"
 	v1 "github.com/huseinnashr/pforder-backend/api/v1"
 	"github.com/huseinnashr/pforder-backend/internal/config"
 	"golang.org/x/sync/errgroup"
@@ -20,6 +21,11 @@ func startServer(ctx context.Context, config *config.Config, accountHandler v1.A
 
 	httpServer := http.NewServer(
 		http.Address(config.Server.HTTP.Address),
+		http.Filter(handlers.CORS(
+			handlers.AllowedOrigins([]string{"*"}),
+			handlers.AllowedMethods([]string{"GET", "HEAD", "POST", "OPTIONS"}),
+			handlers.AllowedHeaders([]string{"Content-Type"}),
+		)),
 	)
 	v1.RegisterAccountServiceHTTPServer(httpServer, accountHandler)
 	servers = append(servers, httpServer)
