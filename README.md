@@ -34,3 +34,4 @@ Page 2 with filter
 
 #### Unit Test
 You can see unit test example in `./internal/handler/api/order/handler.api.order.methods_test.go`
+1. Run `make test` to run the unit test
