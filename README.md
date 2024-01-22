@@ -31,3 +31,6 @@ Page 1 with filter
 ![page_1_filter](./files/screenshots/page_1_filter.png)
 Page 2 with filter
 ![page_2_filter](./files/screenshots/page_2_filter.png)
+
+#### Unit Test
+You can see unit test example in `./internal/handler/api/order/handler.api.order.methods_test.go`

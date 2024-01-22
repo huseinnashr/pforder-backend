@@ -10,6 +10,7 @@ import (
 
 const SMALLEST_MONEY_UNIT int64 = 10000
 
+//go:generate mockgen -source=domain.interface.go -destination=domain.interface_mock.go -package=domain
 type IOrderUsecase interface {
 	ListOrder(ctx context.Context, params ListOrderParam) ([]Order, string, error)
 }

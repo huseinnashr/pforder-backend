@@ -4,8 +4,11 @@ setup:
 	go mod vendor
 	go install github.com/cespare/reflex@latest
 	go install github.com/pressly/goose/v3/cmd/goose@latest
+	go install go.uber.org/mock/mockgen@latest
 
-.PHONY: api
+test:
+	go test ./...
+
 api:
 	buf generate ${EXCLUDE_THIRD_PARTY} --path api/v1
 
