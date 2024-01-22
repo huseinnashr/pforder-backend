@@ -302,7 +302,7 @@ type Order struct {
 	CustomerName        string   `protobuf:"bytes,4,opt,name=customer_name,json=customerName,proto3" json:"customer_name,omitempty"`
 	// RFC 3339
 	OrderDate *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=order_date,json=orderDate,proto3" json:"order_date,omitempty"`
-	// 0.1 cent units
+	// 0.01 cent units
 	DeliveredAmount int64 `protobuf:"varint,6,opt,name=delivered_amount,json=deliveredAmount,proto3" json:"delivered_amount,omitempty"`
 	TotalAmount     int64 `protobuf:"varint,7,opt,name=total_amount,json=totalAmount,proto3" json:"total_amount,omitempty"`
 }

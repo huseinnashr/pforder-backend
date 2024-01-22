@@ -59,7 +59,7 @@ message Order {
   string customer_name = 4;
   // RFC 3339
   google.protobuf.Timestamp order_date = 5;
-  // 0.1 cent units
+  // 0.01 cent units
   int64 delivered_amount = 6;
   int64 total_amount = 7;
 }

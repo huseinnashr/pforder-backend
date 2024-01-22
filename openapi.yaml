@@ -78,7 +78,7 @@ components:
                     format: date-time
                 deliveredAmount:
                     type: string
-                    description: 0.1 cent units
+                    description: 0.01 cent units
                 totalAmount:
                     type: string
         v1.PaginationRequest:
