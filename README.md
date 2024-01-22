@@ -26,3 +26,8 @@ GOOSE_DBSTRING="postgres://postgres:postgres@localhost:5432/postgres"
 52. Run `make api` after changing .proto to generate .pb and openapi spec
 
 ### Test Results
+#### User can fetch list of orders from /orders:list
+Page 1 with filter
+![page_1_filter](./files/screenshots/page_1_filter.png)
+Page 2 with filter
+![page_2_filter](./files/screenshots/page_2_filter.png)
