@@ -56,7 +56,7 @@ func (r *Repo) ListOrder(ctx context.Context, params domain.ListOrderParam) ([]d
 	}
 
 	if params.Search != "" {
-		qb.AddQuery("AND (o.order_name = ? OR ? = any(oi.products))", params.Search, params.Search)
+		qb.AddQuery("AND (o.order_name ILIKE '%' || ? || '%' OR ? ILIKE any(oi.products))", params.Search, params.Search)
 	}
 
 	if params.Cursor != "" {
